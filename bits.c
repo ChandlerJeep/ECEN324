@@ -38,7 +38,7 @@ team_struct team =
       or, ID1+ID2 where ID1 is the login ID of the first team member
       and ID2 is the login ID of the second team member.
        Example: joestudent+zmename */
-    "emrys+", 
+    "emrys+ejones23", 
    /* Student name 1: Replace with the name of first team member */
     "Brady Field",
    /* Login ID 1: Replace with the login ID of first team member */
@@ -48,7 +48,7 @@ team_struct team =
    /* Student name 2: Name of the second team member */
    "Emmanuel Jones",
    /* Login ID 2: Login ID of the second team member */
-   ""
+   "ejones23"
 };
 
 #if 0
@@ -166,7 +166,8 @@ NOTES:
  *   Rating: 1
  */
 int bitNor(int x, int y) {
-  return 2;
+          
+  return (~x & ~y);
 }
 /* 
  * bitXor - x^y using only ~ and & 
