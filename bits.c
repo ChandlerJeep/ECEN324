@@ -207,7 +207,7 @@ int getByte(int x, int n) {
  *   Rating: 2
  */
 int copyLSB(int x) {
-  return 2;
+   return ~0 + !(x & 0x01);
 }
 /* 
  * logicalShift - shift x to the right by n, using a logical shift
