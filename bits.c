@@ -2,8 +2,8 @@
 * Program:
 *    Lab Datalab
 *    Brother Jones, ECEN 324
-* Author:
-*    Your Name
+* Authors:
+*    Brady Field & Emmanuel Jones
 * Summary:
 *    descriptive text
 ***********************************************************************/
@@ -166,7 +166,6 @@ NOTES:
  *   Rating: 1
  */
 int bitNor(int x, int y) {
-          
   return (~x & ~y);
 }
 /* 
@@ -177,12 +176,7 @@ int bitNor(int x, int y) {
  *   Rating: 2
  */
 int bitXor(int x, int y) {
-
-
-
-
-  return 2;
-
+  return ~(~x & ~y) & ~(x & y);
 }
 /* 
  * isNotEqual - return 0 if x == y, and 1 otherwise 
@@ -192,7 +186,7 @@ int bitXor(int x, int y) {
  *   Rating: 2
  */
 int isNotEqual(int x, int y) {
-  return 2;
+   return !!(x^y);
 }
 /* 
  * getByte - Extract byte n from word x
@@ -203,7 +197,7 @@ int isNotEqual(int x, int y) {
  *   Rating: 2
  */
 int getByte(int x, int n) {
-  return 2;
+   return (x >> (n * 8)) & 0xFF;
 }
 /* 
  * copyLSB - set all bits of result to least significant bit of x
