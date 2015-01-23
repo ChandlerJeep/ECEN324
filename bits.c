@@ -249,7 +249,7 @@ int bang(int x) {
  *   Rating: 4 
  */
 int leastBitPos(int x) {
-  return 2;
+   return (x & (~x + 0x01));
 }
 /* 
  * TMax - return maximum two's complement integer 
