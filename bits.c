@@ -228,9 +228,21 @@ int logicalShift(int x, int n) {
  *   Rating: 4
  */
 int bitCount(int x) {
-   int count = x & 0x1111;
-   
-   return 2;
+   int mask = 0x11 + (0x11 << 8) + (0x11 << 16) + (0x11 << 24);
+   int count = x & mask;
+   int total = 0;
+   int addMask = 0x0F;
+   x = x >> 1;
+   count += x & mask;
+   x = x >> 1;
+   count += x & mask;
+   x = x >> 1;
+   count += x & mask;
+   total += (count & addMask) + ((count >> 4) & addMask)
+      + ((count >> 8) & addMask) + ((count >> 12) & addMask)
+      + ((count >> 16) & addMask) + ((count >> 20) & addMask)
+      + ((count >> 24) & addMask) + ((count >> 28) & addMask);
+   return total;
 }
 /* 
  * bang - Compute !x without using !
@@ -270,7 +282,7 @@ int tmax(void) {
  *   Rating: 3
  */
 int isNonNegative(int x) {
-  return 2;
+   return (x >> 31) + 0x01;
 }
 /* 
  * isGreater - if x > y  then return 1, else return 0 
@@ -280,7 +292,7 @@ int isNonNegative(int x) {
  *   Rating: 3
  */
 int isGreater(int x, int y) {
-  return 2;
+  return 9;
 }
 /* 
  * divpwr2 - Compute x/(2^n), for 0 <= n <= 30
