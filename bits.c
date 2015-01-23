@@ -272,7 +272,7 @@ int leastBitPos(int x) {
  *   Rating: 1
  */
 int tmax(void) {
-  return 2;
+   return ~(0x01 << 31);
 }
 /* 
  * isNonNegative - return 1 if x >= 0, return 0 otherwise 
