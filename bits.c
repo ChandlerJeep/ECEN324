@@ -197,7 +197,7 @@ int isNotEqual(int x, int y) {
  *   Rating: 2
  */
 int getByte(int x, int n) {
-   return (x >> (n * 8)) & 0xFF;
+   return (x >> (n << 3)) & 0xFF;
 }
 /* 
  * copyLSB - set all bits of result to least significant bit of x
@@ -218,7 +218,7 @@ int copyLSB(int x) {
  *   Rating: 3 
  */
 int logicalShift(int x, int n) {
-   return (x >> n)&(~(0x80 << 24) >> (n +  (0x01 << 31 >> 31)));
+  return (x >> n) & (~(0x80 << 24) >> (n + ~0x00));
 }
 /*
  * bitCount - returns count of number of 1's in word
@@ -228,7 +228,9 @@ int logicalShift(int x, int n) {
  *   Rating: 4
  */
 int bitCount(int x) {
-  return 2;
+   int count = x & 0x1111;
+   
+   return 2;
 }
 /* 
  * bang - Compute !x without using !
