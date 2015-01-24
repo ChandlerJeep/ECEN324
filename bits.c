@@ -252,7 +252,7 @@ int bitCount(int x) {
  *   Rating: 4 
  */
 int bang(int x) {
-  return 2;
+   return ((~(x & (~x + 0x01)) + 0x01) >> 31) + 0x01;
 }
 /* 
  * leastBitPos - return a mask that marks the position of the
