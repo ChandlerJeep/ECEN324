@@ -303,7 +303,10 @@ int isGreater(int x, int y) {
  *   Rating: 2
  */
 int divpwr2(int x, int n) {
-    return 2;
+   return x >> n;//236 errors; it seems like this is right with
+   //at least the nonnegatives.
+   int y = 0x01 << n;
+   return ((x + y + ~0x00) >> n);//293 errors
 }
 /* 
  * abs - absolute value of x (except returns TMin for TMin)
