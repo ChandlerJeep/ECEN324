@@ -292,7 +292,19 @@ int isNonNegative(int x) {
  *   Rating: 3
  */
 int isGreater(int x, int y) {
-  return 9;
+   int f = 0x01 << 31;
+   int diff = x ^ y;
+   int m = diff;
+   int d = x ^ f; /*flip top bit to handle negative*/
+   /*need most signifcant bit*/
+   m = m | m >> 1;
+   m = m | m >> 2;
+   m = m | m >> 4;
+   m = m | m >> 8;
+   m = m | m >> 16;
+   m = m & ((~m >> 1)^f);
+   
+   return !!(d & m);
 }
 /* 
  * divpwr2 - Compute x/(2^n), for 0 <= n <= 30
@@ -303,10 +315,16 @@ int isGreater(int x, int y) {
  *   Rating: 2
  */
 int divpwr2(int x, int n) {
-   return x >> n;//236 errors; it seems like this is right with
+   //return x >> n;//236 errors; it seems like this is right with
    //at least the nonnegatives.
-   int y = 0x01 << n;
-   return ((x + y + ~0x00) >> n);//293 errors
+   //int z = !((x >> 31) + 0x01);
+   //return (x - z) >> n;
+   //int y = 0x01 << n;
+   //return ((x + y + ~0x00) >> n);//293 errors
+   // if (x >= 0)
+    return x >> n;
+      // else
+      // return (x >> n) - 1;
 }
 /* 
  * abs - absolute value of x (except returns TMin for TMin)
