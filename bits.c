@@ -334,7 +334,7 @@ int divpwr2(int x, int n) {
  *   Rating: 4
  */
 int abs(int x) {
-  return 2;
+   return (x ^ x >> 31) + (0x01 & x >> 31);
 }
 /* 
  * addOK - Determine if can compute x+y without overflow
