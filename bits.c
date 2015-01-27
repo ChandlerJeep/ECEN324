@@ -321,10 +321,10 @@ int divpwr2(int x, int n) {
    //return (x - z) >> n;
    //int y = 0x01 << n;
    //return ((x + y + ~0x00) >> n);//293 errors
-   // if (x >= 0)
-    return x >> n;
-      // else
-      // return (x >> n) - 1;
+   //  if (x >= 0)
+   //   return x >> n;
+   // else
+      return (x >> n) + 1;
 }
 /* 
  * abs - absolute value of x (except returns TMin for TMin)
@@ -345,5 +345,6 @@ int abs(int x) {
  *   Rating: 3
  */
 int addOK(int x, int y) {
-  return 2;
+   int sum = (x + y) >> 31;
+   return !(((x >> 31) ^ sum) & ((y >> 31) ^ sum));
 }
