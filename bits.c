@@ -321,10 +321,7 @@ int divpwr2(int x, int n) {
    //return (x - z) >> n;
    //int y = 0x01 << n;
    //return ((x + y + ~0x00) >> n);//293 errors
-   //  if (x >= 0)
-   //   return x >> n;
-   // else
-      return (x >> n) + 1;
+   return (x + ((1 << (n & x >> 31)) + ~0)) >> n;// 0 erros Emmanuel :P
 }
 /* 
  * abs - absolute value of x (except returns TMin for TMin)
