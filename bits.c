@@ -5,7 +5,8 @@
 * Authors:
 *    Brady Field & Emmanuel Jones
 * Summary:
-*    descriptive text
+*    This program is an exercise in "bit twiddling". Useful logical
+* operations are performed using rudimentary, hardware-oriented methods.
 ***********************************************************************/
 
 /* 
@@ -296,7 +297,7 @@ int isGreater(int x, int y) {
    int diff = x ^ y;
    int m = diff;
    int d = x ^ f; /*flip top bit to handle negative*/
-   /*need most signifcant bit*/
+   /*need most significant bit*/
    m = m | m >> 1;
    m = m | m >> 2;
    m = m | m >> 4;
@@ -315,13 +316,7 @@ int isGreater(int x, int y) {
  *   Rating: 2
  */
 int divpwr2(int x, int n) {
-   //return x >> n;//236 errors; it seems like this is right with
-   //at least the nonnegatives.
-   //int z = !((x >> 31) + 0x01);
-   //return (x - z) >> n;
-   //int y = 0x01 << n;
-   //return ((x + y + ~0x00) >> n);//293 errors
-   return (x + ((1 << (n & x >> 31)) + ~0)) >> n;// 0 erros Emmanuel :P
+   return (x + ((1 << (n & x >> 31)) + ~0)) >> n;
 }
 /* 
  * abs - absolute value of x (except returns TMin for TMin)
